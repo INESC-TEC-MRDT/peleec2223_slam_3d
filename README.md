@@ -64,3 +64,49 @@
    # Enable Docker Desktop on login
    systemctl --user enable docker-desktop
    ```
+
+### ROS Docker
+
+1. Pull a prebuilt OSRF ROS images on Docker Hub
+   ```sh
+   docker pull osrf/ros:melodic-desktop-full
+   ```
+   - See available ROS dockers in https://hub.docker.com/r/osrf/ros/tags
+   - Do not forget to initialize Docker before running the previous command
+2. Run to create the ROS docker container
+   ```sh
+   docker run -it osrf/ros:melodic-desktop-full
+   ```
+
+However, only tunning the ROS container will not let you save the state of the
+container.
+
+1. Build the ROS docker container with additional commands to pre-install the
+   software in the container
+   ```sh
+   docker build -t osrf/ros:melodic-desktop-full .
+   ```
+   - **Note:** in the current directory, a Dockerfile should be present!
+   - Example of a Docker file available in the [docker]() folder
+2. Run to create the ROS docker container
+   ```sh
+   docker run -it osrf/ros:melodic-desktop-full
+   ```
+
+## Usage
+
+### Docker Containers
+
+```sh
+# See all available containers
+docker ps -a
+
+# Start a container
+docker start amazing_lehmann
+
+# Open the bash command line connected to the previous container
+docker exec -it amazing_lehmann bash
+
+# Stop the container
+docker stop amazing_lehmann
+```
