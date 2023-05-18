@@ -27,7 +27,7 @@
 3. Install Docker
    - Install `gnome-terminal` for non-Gnome environments
      ```sh
-     sudo apt remove docker-desktop
+     sudo apt install gnome-terminal
      ```
    - Uninstall tech preview of Docker
      ```sh
