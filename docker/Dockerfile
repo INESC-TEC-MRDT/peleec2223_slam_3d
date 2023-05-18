@@ -40,10 +40,15 @@ RUN cd ~/Downloads/ \
 # Build local ROS packages
 RUN mkdir -p ~/catkin_ws/src \
     && cd ~/catkin_ws/src \
-    #&& git clone https://github.com/RoboSense-LiDAR/rslidar_sdk.git \
+    && git clone https://github.com/RoboSense-LiDAR/rslidar_sdk.git \
     && git clone https://github.com/RobustFieldAutonomyLab/LeGO-LOAM.git \
     && git clone https://github.com/HKUST-Aerial-Robotics/A-LOAM.git \
-    && cd .. \
+    
+    # Correction error rslidar_sdk
+    && cd ~/catkin_ws/src/rslidar_sdk/src \
+    && git clone https://github.com/RoboSense-LiDAR/rs_driver.git \
+    
+    && cd ~/catkin_ws \
     && source /opt/ros/melodic/setup.bash \
     && catkin_make -j1
 
